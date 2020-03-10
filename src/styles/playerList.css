@@ -1,0 +1,54 @@
+.playerCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerCard {
+  width: 85%;
+  max-width: 45vw;
+  margin: 1rem 0;
+  background-color: #fff;
+  border: 1px solid #282c3452;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.playerCard .titleSection {
+  padding: 1rem;
+}
+
+.playerCard h2 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: underline;
+}
+
+.playerCard .statView {
+  padding: 1rem;
+  background-color: lightblue;
+  border-radius: 0 0 5px 5px;
+}
+
+.playerCard .statViewOptions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.playerCard button {
+  background-color: transparent;
+  border-radius: 5px;
+  border: solid 2px lightgray;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+.playerCard .Dropdown-root {
+  background-color: transparent;
+  border-radius: 5px;
+  border: solid 2px lightgray;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
