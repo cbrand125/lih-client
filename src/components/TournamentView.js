@@ -18,7 +18,20 @@ export default class TournamentView extends Component {
       `https://lih-api.herokuapp.com/api/stats/tournament?tournament_name=${params.name}`
     );
 
-    this.setState({ players: Object.entries(data) });
+    this.setState({
+      players: Object.entries(data).sort((first, second) => {
+        const a = first[1]['Overall Winrate'];
+        const b = second[1]['Overall Winrate'];
+
+        if (a > b) {
+          return -1;
+        }
+        if (b > a) {
+          return 1;
+        }
+        return 0;
+      })
+    });
   }
 
   render() {
