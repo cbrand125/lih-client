@@ -1,0 +1,22 @@
+header {
+    border-bottom: 1px solid black;
+    font-size: 1.5vw;
+    text-align: right;
+    padding: 5px;
+  }
+  
+  nav li {
+    display: inline-block;
+    text-align: center;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: black;
+    padding: 1vw 2vw;
+  }
+  nav a:hover {
+    text-decoration: underline;
+    color: black;
+    padding: 1vw 2vw;
+  }
