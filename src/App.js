@@ -1,37 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import PlayerCardList from './components/PlayerCardList';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import TournamentView from './components/TournamentView';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      players: []
-    };
-  }
-
-  async componentDidMount() {
-    const { data } = await axios.get(
-      'https://lih-api.herokuapp.com/api/stats/tournament?tournament_name=test_1'
-    );
-
-    this.setState({ players: Object.entries(data) });
-  }
-
-  fetchPlayers = async () => {
-    const { data } = await axios.get(
-      'https://lih-api.herokuapp.com/api/stats/tournament?tournament_name=test_1'
-    );
-
-    this.setState({ players: Object.entries(data) });
-  };
-
   render() {
     return (
-      <React.Fragment>
-        <PlayerCardList players={this.state.players} />
-      </React.Fragment>
+      <Router>
+        <Switch>
+          <Route path="/view" exact component={TournamentView} />
+          <Route render={() => <div>404</div>} />
+        </Switch>
+      </Router>
     );
   }
 }
