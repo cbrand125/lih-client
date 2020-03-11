@@ -1,6 +1,7 @@
 @import url('./styles/playerList.css');
 @import url('./styles/header.css');
 @import url('./styles/form.css');
+@import url('./styles/search.css');
 
 body {
   margin: 0;

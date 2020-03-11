@@ -5,6 +5,7 @@ import TournamentView from './components/TournamentView';
 import Header from './components/Header';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
+import CreateForm from './components/CreateForm';
 
 export default class App extends Component {
   constructor(props) {
@@ -37,17 +38,37 @@ export default class App extends Component {
     window.location.href = '/view';
   };
 
-  logout = () => {
-    axios.delete('https://lih-api.herokuapp.com/api/users/logout', {
-      cookie: this.state.token
-    });
+  logout = async () => {
+    let config = {
+      headers: {
+        Authorization: 'Bearer ' + this.state.token
+      }
+    };
 
-    console.log('ok');
+    axios.delete('https://lih-api.herokuapp.com/api/users/logout', config);
 
     localStorage.setItem('token', '');
     this.setState({ token: '' });
 
     window.location.href = '/view';
+  };
+
+  create = async data => {
+    const { gameid, tournament } = data;
+
+    let config = {
+      headers: {
+        Authorization: 'Bearer ' + this.state.token
+      }
+    };
+
+    await axios.put(
+      `https://lih-api.herokuapp.com/api/stats/game?game_id=${gameid}&tournament_name=${tournament}`,
+      null,
+      config
+    );
+
+    window.location.href = `/view?name=${tournament}`;
   };
 
   render() {
@@ -63,6 +84,10 @@ export default class App extends Component {
           <Route
             path="/login"
             render={() => <LoginForm onSubmit={this.login} />}
+          />
+          <Route
+            path="/add"
+            render={() => <CreateForm onSubmit={this.create} />}
           />
           <Route render={() => <div>404</div>} />
         </Switch>

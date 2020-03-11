@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 export default class Header extends Component {
   handleLogout = event => {
@@ -9,6 +10,10 @@ export default class Header extends Component {
     this.props.logout();
   };
 
+  viewTournament = async text => {
+    window.location.href = `/view?name=${text}`;
+  };
+
   render() {
     const token = this.props.token;
     let links;
@@ -16,6 +21,9 @@ export default class Header extends Component {
     if (token) {
       links = (
         <React.Fragment>
+          <li>
+            <Link to="/add">Add</Link>
+          </li>
           <li>
             <Link to="/" onClick={this.handleLogout}>
               Logout
@@ -41,10 +49,10 @@ export default class Header extends Component {
         <nav>
           <ul>
             <li>
-              <Link to="/view">View</Link>
+              <SearchBar onSearch={this.viewTournament} />
             </li>
-            {links}
           </ul>
+          <ul>{links}</ul>
         </nav>
       </header>
     );
