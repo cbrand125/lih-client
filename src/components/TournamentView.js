@@ -43,7 +43,7 @@ export default class TournamentView extends Component {
     const sorted = [...this.state.unfiltered].filter(value => {
       const name = value[0];
 
-      if (name.includes(text)) {
+      if (name.toUpperCase().includes(text.toUpperCase())) {
         return true;
       }
 
