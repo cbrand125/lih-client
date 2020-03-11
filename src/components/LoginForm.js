@@ -31,7 +31,7 @@ export default class LoginForm extends Component {
           <h2>Log In</h2>
           <form onSubmit={this.handleSubmit}>
             <label className="halfwidth">
-              Name
+              Email
               <input
                 name="name"
                 type="text"

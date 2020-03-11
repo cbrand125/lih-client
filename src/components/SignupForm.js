@@ -6,7 +6,9 @@ export default class SignupForm extends Component {
 
     this.state = {
       name: '',
-      password: ''
+      password: '',
+      first: '',
+      last: ''
     };
   }
 
@@ -46,6 +48,24 @@ export default class SignupForm extends Component {
                 type="text"
                 value={this.state.password}
                 onChange={event => this.handleChange(event, 'password')}
+              />
+            </label>
+            <label className="halfwidth">
+              First Name
+              <input
+                name="first"
+                type="text"
+                value={this.state.first}
+                onChange={event => this.handleChange(event, 'first')}
+              />
+            </label>
+            <label className="halfwidth">
+              Last Name
+              <input
+                name="last"
+                type="text"
+                value={this.state.last}
+                onChange={event => this.handleChange(event, 'last')}
               />
             </label>
             <button type="submit">Sign Up</button>
