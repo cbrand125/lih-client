@@ -7,7 +7,8 @@ export default class Header extends Component {
     super(props);
 
     this.state = {
-      toView: ''
+      toView: '',
+      toHome: false
     };
   }
 
@@ -17,7 +18,7 @@ export default class Header extends Component {
 
     this.props.logout();
     this.setState(() => ({
-      toView: ' '
+      toHome: true
     }));
   };
 
@@ -33,6 +34,16 @@ export default class Header extends Component {
 
       this.setState(() => ({
         toView: ''
+      }));
+
+      return <Redirect to={to} />
+    }
+
+    if (this.state.toHome) {
+      const to = `/`;
+
+      this.setState(() => ({
+        toHome: false
       }));
 
       return <Redirect to={to} />

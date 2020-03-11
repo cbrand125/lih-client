@@ -10,7 +10,7 @@ export default class SignupForm extends Component {
       password: '',
       first: '',
       last: '',
-      toView: ''
+      toHome: false
     };
   }
 
@@ -28,13 +28,13 @@ export default class SignupForm extends Component {
     await this.props.onSubmit(this.state);
 
     this.setState(() => ({
-      toView: ' '
+      toHome: true
     }));
   };
 
   render() {
-    if (this.state.toView) {
-      return <Redirect to={`/view?name=${this.state.toView}`} />
+    if (this.state.toHome) {
+      return <Redirect to={`/`} />
     }
 
     return (

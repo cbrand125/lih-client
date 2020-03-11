@@ -8,7 +8,7 @@ export default class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
-      toView: ''
+      toHome: false
     };
   }
 
@@ -26,13 +26,13 @@ export default class LoginForm extends Component {
     await this.props.onSubmit(this.state);
 
     this.setState(() => ({
-      toView: ' '
+      toHome: true
     }));
   };
 
   render() {
-    if (this.state.toView) {
-      return <Redirect to={`/view?name=${this.state.toView}`} />
+    if (this.state.toHome) {
+      return <Redirect to={`/`} />
     }
 
     return (

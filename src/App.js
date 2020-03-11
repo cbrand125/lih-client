@@ -83,6 +83,7 @@ export default class App extends Component {
             path="/add"
             render={() => <CreateForm onSubmit={this.create} />}
           />
+          <Route path="/" render={() => <div>Search for a tournament name above to see some results!</div>} />
           <Route render={() => <div>404</div>} />
         </Switch>
       </Router>
