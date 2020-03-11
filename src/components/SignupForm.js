@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class SignupForm extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class SignupForm extends Component {
       email: '',
       password: '',
       first: '',
-      last: ''
+      last: '',
+      toView: ''
     };
   }
 
@@ -20,13 +22,21 @@ export default class SignupForm extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    await this.props.onSubmit(this.state);
+
+    this.setState(() => ({
+      toView: ' '
+    }));
   };
 
   render() {
+    if (this.state.toView) {
+      return <Redirect to={`/view?name=${this.state.toView}`} />
+    }
+
     return (
       <section className="forms">
         <div className="form">

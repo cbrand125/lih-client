@@ -22,8 +22,6 @@ export default class App extends Component {
 
     localStorage.setItem('token', data);
     this.setState({ token: data });
-
-    window.location.href = '/view';
   };
 
   login = async user => {
@@ -34,8 +32,6 @@ export default class App extends Component {
 
     localStorage.setItem('token', data);
     this.setState({ token: data });
-
-    window.location.href = '/view';
   };
 
   logout = async () => {
