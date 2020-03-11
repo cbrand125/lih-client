@@ -29,7 +29,13 @@ export default class Header extends Component {
 
   render() {
     if (this.state.toView) {
-      return <Redirect to={`/view?name=${this.state.toView}`} />
+      const to = `/view?name=${this.state.toView}`;
+
+      this.setState(() => ({
+        toView: ''
+      }));
+
+      return <Redirect to={to} />
     }
 
     const token = this.props.token;
