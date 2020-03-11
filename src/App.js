@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TournamentView from './components/TournamentView';
 import Header from './components/Header';
+import SignupForm from './components/SignupForm';
+import LoginForm from './components/LoginForm';
 
 export default class App extends Component {
   render() {
