@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import queryString from 'query-string';
 import PlayerCardList from './PlayerCardList';
+import SearchBar from './SearchBar';
 
 export default class TournamentView extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ export default class TournamentView extends Component {
   }
 
   filterPlayers = (text) => {
-    const sorted = [...unfiltered].filter(value => {
+    const sorted = [...this.state.unfiltered].filter(value => {
       const name = value[0];
 
       if (name.includes(text)) {
