@@ -3,18 +3,35 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      toView: ''
+    };
+  }
+
   handleLogout = event => {
     event.preventDefault();
     event.stopPropagation();
 
     this.props.logout();
+    this.setState(() => ({
+      toView: ' '
+    }));
   };
 
   viewTournament = async text => {
-    window.location.href = `/view?name=${text}`;
+    this.setState(() => ({
+      toView: text
+    }));
   };
 
   render() {
+    if (this.state.toView) {
+      return <Redirect to={`/view?name=${this.state.toView}`} />
+    }
+
     const token = this.props.token;
     let links;
 

@@ -49,8 +49,6 @@ export default class App extends Component {
 
     localStorage.setItem('token', '');
     this.setState({ token: '' });
-
-    window.location.href = '/view';
   };
 
   create = async data => {
@@ -68,7 +66,7 @@ export default class App extends Component {
       config
     );
 
-    window.location.href = `/view?name=${tournament}`;
+    return tournament;
   };
 
   render() {

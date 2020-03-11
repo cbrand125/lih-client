@@ -6,7 +6,8 @@ export default class LoginForm extends Component {
 
     this.state = {
       gameid: '',
-      tournament: ''
+      tournament: '',
+      toView: ''
     };
   }
 
@@ -21,10 +22,17 @@ export default class LoginForm extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    const tournament = await this.props.onSubmit(this.state);
+    this.setState(() => ({
+      toView: tournament
+    }));
   };
 
   render() {
+    if (this.state.toView) {
+      return <Redirect to={`/view?name=${this.state.toView}`} />
+    }
+
     return (
       <section className="forms">
         <div className="form">
