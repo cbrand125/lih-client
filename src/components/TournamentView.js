@@ -8,6 +8,7 @@ export default class TournamentView extends Component {
     super(props);
 
     this.state = {
+      unfiltered: [],
       players: []
     };
   }
@@ -18,25 +19,45 @@ export default class TournamentView extends Component {
       `https://lih-api.herokuapp.com/api/stats/tournament?tournament_name=${params.name}`
     );
 
-    this.setState({
-      players: Object.entries(data).sort((first, second) => {
-        const a = first[1]['Overall Winrate'];
-        const b = second[1]['Overall Winrate'];
+    const sorted = [...Object.entries(data)].sort((first, second) => {
+      const a = first[1]['Overall Winrate'];
+      const b = second[1]['Overall Winrate'];
 
-        if (a > b) {
-          return -1;
-        }
-        if (b > a) {
-          return 1;
-        }
-        return 0;
-      })
+      if (a > b) {
+        return -1;
+      }
+      if (b > a) {
+        return 1;
+      }
+      return 0;
+    });
+
+    this.setState({
+      unfiltered: sorted,
+      players: [...sorted]
     });
   }
+
+  filterPlayers = (text) => {
+    const sorted = [...unfiltered].filter(value => {
+      const name = value[0];
+
+      if (name.includes(text)) {
+        return true;
+      }
+
+      return false;
+    });
+
+    this.setState({
+      players: sorted
+    });
+  };
 
   render() {
     return (
       <React.Fragment>
+        <SearchBar onSearch={this.filterPlayers} />
         <PlayerCardList players={this.state.players} />
       </React.Fragment>
     );
