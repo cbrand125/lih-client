@@ -5,7 +5,7 @@ export default class LoginForm extends Component {
     super(props);
 
     this.state = {
-      name: '',
+      email: '',
       password: ''
     };
   }
@@ -33,17 +33,17 @@ export default class LoginForm extends Component {
             <label className="halfwidth">
               Email
               <input
-                name="name"
+                name="email"
                 type="text"
-                value={this.state.name}
-                onChange={event => this.handleChange(event, 'name')}
+                value={this.state.email}
+                onChange={event => this.handleChange(event, 'email')}
               />
             </label>
             <label className="halfwidth">
               Password
               <input
                 name="password"
-                type="text"
+                type="password"
                 value={this.state.password}
                 onChange={event => this.handleChange(event, 'password')}
               />
