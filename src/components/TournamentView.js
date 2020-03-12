@@ -24,6 +24,13 @@ export default class TournamentView extends Component {
       const a = first[1]['Overall Winrate'];
       const b = second[1]['Overall Winrate'];
 
+      const a1 = first[1]['Overall Games Played'];
+      const b1 = second[1]['Overall Games Played'];
+
+      if (a1 < 3 && b1 >= 2) {
+        return 1;
+      }
+
       if (a > b) {
         return -1;
       }
