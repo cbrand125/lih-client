@@ -1,3 +1,5 @@
+This is meant to be the front-end for the back-end at: https://github.com/cbrand125/lol-inhouse
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
