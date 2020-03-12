@@ -41,6 +41,14 @@ export default class TournamentView extends Component {
       if (b > a) {
         return 1;
       }
+
+      if (a1 > b1) {
+        return -1;
+      }
+      if (b1 > a1) {
+        return 1;
+      }
+
       return 0;
     });
 
